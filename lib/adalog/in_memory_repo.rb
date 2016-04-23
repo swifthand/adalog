@@ -31,7 +31,7 @@ module Adalog
 
 
     def all
-      return storage.dup
+      storage.dup
     end
 
   end
