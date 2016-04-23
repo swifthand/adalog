@@ -9,7 +9,7 @@ module Adalog
   end
 
 
-  def self.configure!
+  def self.configure
     config = Adalog::Configuration.new
     yield(config)
     config.validate!
@@ -22,7 +22,10 @@ module Adalog
 
   def self.post_configuration(config)
     if config.singleton
-      self.extend RepoConvenienceMethods
+      self.extend(RepoConvenienceMethods)
+    end
+    if config.html_erb
+      Tilt.register(Tilt::ERBTemplate, 'html.erb')
     end
   end
 

@@ -1,0 +1,12 @@
+.DS_Store
+lob/*.log
+tmp/**/*
+*.swp
+*.tmproj
+tmtags
+.project
+.bundle
+*.sublime-project
+*.sublime-workspace
+.vagrant
+

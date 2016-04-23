@@ -1,0 +1,81 @@
+@media (max-width: 1200px) {
+  .entries-list {
+    width   : 100%;
+    padding : 4px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .entries-list {
+    width: 75%;
+  }
+}
+
+.entries-list {
+  box-sizing  : border-box;
+  margin-left : auto;
+  margin-right: auto;
+  text-align  : center;
+}
+.entries-list div:after {
+  content : "";
+  display : table;
+}
+
+
+.entries-list .entry {
+  box-sizing    : border-box;
+  border        : 1px solid #ddd;
+  border-radius : 4px;
+  margin-bottom : 8px;
+  text-align    : left;
+  font-size     : 0;
+}
+
+
+.entries-list .title-and-message {
+  font-size   : 16px;
+}
+
+
+.entries-list .title {
+  font-weight : bold;
+  padding     : 8px;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .entries-list .title {
+    display: inline-block;
+  }
+}
+
+
+.entries-list .message {
+  padding   : 8px;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .entries-list .message {
+    display: inline-block;
+  }
+}
+
+
+.entries-list .timestamp {
+  font-size : 16px;
+  font-style: italic;
+  text-align: left;
+  padding   : 8px;
+}
+@media (min-width: 768px) {
+  .entries-list .timestamp {
+    text-align: right;
+  }
+}
+
+
+.entries-list .details {
+  font-size : 12px;
+  padding   : 8px;
+  text-align: left;
+}

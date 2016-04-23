@@ -20,17 +20,17 @@ module Adalog
         storage.roots.flat_map do |key|
           storage.fetch(key, [])
         end
-      end
+      end.reverse
     end
 
 
     def insert(entry = nil, **options)
-      converted_entry = Adalog::Entry.build(entry = nil, **options)
+      converted_entry = Adalog::Entry.build(entry, **options)
       if converted_entry.valid?
         insert_into_storage(converted_entry)
         [:ok, converted_entry]
       else
-        [:error, converted_entry.falure]
+        [:error, converted_entry.errors]
       end
     end
 

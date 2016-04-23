@@ -2,7 +2,7 @@ module Adalog
 
   class Configuration
 
-    RequiredSettings  = [:repo, :singleton].freeze
+    RequiredSettings  = [:repo, :singleton, :html_erb, :time_format, :web_heading].freeze
     UntouchedValue    = Object.new.freeze
 
     attr_accessor *RequiredSettings
@@ -15,14 +15,19 @@ module Adalog
 
 
     def defaults
-      { repo:       Adalog::InMemoryRepo.new,
-        singleton:  true,
+      { repo:         Adalog::InMemoryRepo.new,
+        singleton:    true,
+        html_erb:     true,
+        time_format:  "%H:%M:%S - %d %b %Y",
+        web_heading:  "Mock Adapter Logs",
       }
     end
 
 
     def web_defaults
-      { repo: self.repo,
+      { repo:         self.repo,
+        time_format:  self.time_format,
+        heading:      self.web_heading,
       }
     end
 
