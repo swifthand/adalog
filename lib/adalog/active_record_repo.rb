@@ -1,10 +1,11 @@
 module Adalog
   class ActiveRecordRepo
 
-    attr_reader :record_class
+    attr_reader :record_class, :base_relation
 
     def initialize(record_class, **repo_options)
-      @record_class = record_class
+      @record_class   = record_class
+      @base_relation  = determine_base_relation(repo_options)
     end
 
 
@@ -29,7 +30,8 @@ module Adalog
         if record.save
           [:ok, record]
         else
-          [:error, ["Unknown non-validation error"]]
+          wtf = "Unknown Non-validation error in call to #{record_class}#save"
+          [:error, [wtf]]
         end
       else
         [:error, record.errors.full_messages]
@@ -46,9 +48,14 @@ module Adalog
 
 
     def relation_from_options(where, order)
-      relation = record_class.unscoped
+      relation = base_relation.dup
       relation = relation.where(where) if where.any?
       relation = relation.order(order) if order != :none
+    end
+
+
+    def determine_base_relation(options)
+      options.fetch(:base_relation, record_class.unscoped)
     end
 
   end

@@ -2,14 +2,33 @@ require 'sinatra/base'
 module Adalog
   class Web < Sinatra::Base
 
-    attr_reader :repo, :time_format
+    Config = Struct.new(:repo, :heading, :time_format)
+
+    attr_reader :config
 
     def initialize(app = nil, web_options = {})
       super(app)
-      options       = default_options.merge(web_options)
-      @repo         = options.fetch(:repo)
-      @heading      = options.fetch(:heading)
-      @time_format  = options.fetch(:time_format)
+      options = default_options.merge(web_options)
+      @config = Adalog::Web::Config.new
+      instance_variable_options(options)
+      sinatra_class_option_overrides(options)
+    end
+
+
+    def determine_config_settings(config, options)
+      config.repo         = options.fetch(:repo)
+      config.heading      = options.fetch(:heading)
+      config.time_format  = options.fetch(:time_format)
+    end
+
+
+    def determine_class_overrides(options)
+      if options.key?(:erb_layout)
+        class_exec { set :erb, layout: options[:erb_layout] }
+      end
+      if options.key?(:views_folder)
+        class_exec { set :views, options[:views_folder] }
+      end
     end
 
 
@@ -20,23 +39,60 @@ module Adalog
 
     set :root,  File.join(File.dirname(__FILE__), 'web')
     set :erb,   layout: :adalog
+    set :views, File.join(File.dirname(__FILE__), 'web', 'views')
 
-    get '/' do
-      @entries = repo.all
-      erb :index
-    end
 
     helpers do
 
-      def human_time(val)
-        val.strftime(time_format)
+      def humanize_time(val)
+        case val
+        when DateTime, Time
+          val.strftime(config.time_format)
+        when String
+          val
+        else
+          val.to_s
+        end
       end
 
+
       def heading
-        @heading
+        config.heading
       end
 
     end
+
+    ##
+    # The primary page that matters in this simple little log.
+    get '/' do
+      @entries = config.repo.all
+      erb :index
+    end
+
+    ##
+    # TODO: Maybe sort, do a forgiving attempt at date/time parsing and then
+    #       filter based on that?
+    # get '/after/:timestamp' do
+    #   @entries = config.repo.all
+    # end
+
+    ##
+    # TODO: Maybe sort, do a forgiving attempt at date/time parsing and then
+    #       filter based on that?
+    # get '/before/:timestamp' do
+    #   @entries = config.repo.all
+    # end
+
+
+    ##
+    # CONSIDER: Since this is all-destructive, should this be a confirmation
+    #           page first and a followup action via post?
+    post '/clear' do
+      config.repo.clear!
+      redirect to('/')
+    end
+
+
 
   end
 end

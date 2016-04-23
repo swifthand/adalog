@@ -39,18 +39,6 @@ module Adalog
     end
 
 
-    def human_time
-      case timestamp
-      when DateTime, Time
-        timestamp.strftime(Adalog.configuration.time_format)
-      when String
-        timestamp
-      else
-        timestamp.to_s
-      end
-    end
-
-
     def valid?
       @errors.none?
     end
