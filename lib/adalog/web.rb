@@ -38,7 +38,7 @@ module Adalog
 
 
     set :root,  File.join(File.dirname(__FILE__), 'web')
-    set :erb,   layout: :adalog
+    set :erb,   layout: :'adalog.html'
     set :views, File.join(File.dirname(__FILE__), 'web', 'views')
 
 
@@ -60,13 +60,18 @@ module Adalog
         config.heading
       end
 
+
+      def path_from_web_root(path)
+        File.join(("#{env['SCRIPT_NAME']}/" || "/"), path)
+      end
+
     end
 
     ##
     # The primary page that matters in this simple little log.
     get '/' do
       @entries = config.repo.all
-      erb :index
+      erb :'index.html'
     end
 
     ##
