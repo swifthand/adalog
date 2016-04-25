@@ -1,0 +1,28 @@
+- title: Mixpanel Adapter
+  timestamp: 2016-04-24 17:25:06 -0500
+  message: identify
+  details: { first_name: 'Rick', last_name: 'Sanchez' }
+- title: Startup Threads Adapter
+  timestamp: 2016-04-24 16:29:30 -0500
+  message: inventory-shipments:create
+  details: { item_id: "things-on-fire-hoodie", size: "MM", quantity: 1, street1: "4504 Graustark St", street2: "", city: "Houston", state: "TX", zip: "77006", country: "US" }
+- title: SendGrid Adapter
+  timestamp: 2016-04-24 17:16:43 -0500
+  message: transactional-email:send-single
+  details: { id: "2dafa33f-e125-4428-9e4c-9756a787a13d", slug: 'scientist-welcome-email', full_name: 'Rick Sanchez', pricing_plan: 'Misunderstood Genius' }
+- title: Mixpanel Adapter
+  timestamp: 2016-04-24 17:12:22 -0500
+  message: identify
+  details: { id: 555, email: 'rsanchez@example.com'}
+- title: Mixpanel Adapter
+  timestamp: 2016-04-24 16:55:45 -0500
+  message: pageview
+  details: promotional signup page
+- title: SendGrid Adapter
+  timestamp: 2016-04-24 16:45:56 -0500
+  message: transactional-email:send-batch
+  details: { id: "2dafa33f-e125-4428-9e4c-9756a787a13d", slug: 'shipping-status-update', batch_size: 300, valid: 299, invalid: 1 }
+- title: Posthorn Adapter
+  timestamp: 2016-04-24 16:32:27 -0500
+  message: email-preferences:update
+  details: { outreach: false, newsletter: true }

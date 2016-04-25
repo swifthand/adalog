@@ -10,7 +10,7 @@ module Adalog
       super(app)
       options = default_options.merge(web_options)
       @config = Adalog::Web::Config.new
-      instance_variable_options(options)
+      determine_config_settings(config, options)
       sinatra_class_option_overrides(options)
     end
 
@@ -22,7 +22,7 @@ module Adalog
     end
 
 
-    def determine_class_overrides(options)
+    def sinatra_class_option_overrides(options)
       if options.key?(:erb_layout)
         class_exec { set :erb, layout: options[:erb_layout] }
       end

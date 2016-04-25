@@ -8,7 +8,7 @@ module Adalog
       arguments =
         if nil == obj
           options
-        elsif obj.is_a?(Hash)
+        elsif obj.is_a?(Hash) || obj.respond_to?(:[])
           obj
         elsif obj.respond_to?(:to_h)
           obj.to_h
@@ -21,20 +21,20 @@ module Adalog
         end
 
       self.new(
-        title:      options[:title]     || options['title'],
-        timestamp:  options[:timestamp] || options['timestamp'],
-        message:    options[:message]   || options['message'],
-        details:    options[:details]   || options['details'],
+        title:      arguments[:title]     || arguments['title'],
+        timestamp:  arguments[:timestamp] || arguments['timestamp'],
+        message:    arguments[:message]   || arguments['message'],
+        details:    arguments[:details]   || arguments['details'],
       )
     end
 
     attr_reader :title, :timestamp, :message, :details, :errors
 
     def initialize(title: nil, timestamp: nil, message: nil, details: nil)
-      @title      = title
-      @timestamp  = timestamp || DateTime.now
-      @message    = message
-      @details    = details
+      @title      = title     || ''
+      @timestamp  = timestamp || Time.now
+      @message    = message   || ''
+      @details    = details   || ''
       validate!
     end
 

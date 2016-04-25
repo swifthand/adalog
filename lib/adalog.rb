@@ -5,7 +5,7 @@ end
 module Adalog
 
   def self.configuration
-    @configuration || ((configure! { :do_nothing }) && @configuration)
+    @configuration || ((configure! { :defaults }) && @configuration)
   end
 
 
