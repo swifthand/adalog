@@ -22,21 +22,23 @@
   display : table;
 }
 
-
 .entries-list .entry {
+  position      : relative;
   box-sizing    : border-box;
   border        : 1px solid #ddd;
   border-radius : 4px;
   margin-bottom : 8px;
   text-align    : left;
   font-size     : 0;
+  cursor        : pointer;
 }
-
+.entries-list .entry * {
+  font-size: 16px;
+}
 
 .entries-list .title-and-message {
   font-size   : 16px;
 }
-
 
 .entries-list .title {
   font-weight : bold;
@@ -49,7 +51,6 @@
   }
 }
 
-
 .entries-list .message {
   padding   : 8px;
   text-align: left;
@@ -59,7 +60,6 @@
     display: inline-block;
   }
 }
-
 
 .entries-list .timestamp {
   font-size : 16px;
@@ -73,9 +73,27 @@
   }
 }
 
-
 .entries-list .details {
   font-size : 12px;
-  padding   : 8px;
+  padding   : 0 8px 0px;
   text-align: left;
+}
+
+.entries-list .details pre {
+  font-size       : 12px;
+  background-color: #ddd;
+  border-radius   : 4px;
+  padding         : 4px;
+  margin          : 0 0 4px;
+}
+
+.entries-list button.button-small {
+  font-size: 12px;
+}
+
+.entries-list .details-toggle-note {
+  display       : block;
+  text-align    : right;
+  margin        : 0 0 4px;
+  color         : #999;
 }

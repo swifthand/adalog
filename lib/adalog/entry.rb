@@ -11,13 +11,13 @@ module Adalog
         elsif obj.is_a?(Hash) || obj.respond_to?(:[])
           obj
         elsif obj.respond_to?(:to_h)
-          obj.to_h
+          obj.to_h.merge(options)
         else
           { title:      obj.respond_to?(:title)     && obj.title,
             timestamp:  obj.respond_to?(:timestamp) && obj.timestamp,
             message:    obj.respond_to?(:message)   && obj.message,
             details:    obj.respond_to?(:details)   && obj.details,
-          }
+          }.merge(options)
         end
 
       self.new(
@@ -41,6 +41,17 @@ module Adalog
 
     def valid?
       @errors.none?
+    end
+
+    ##
+    # TODO: Make this something we store and/or can override.
+    def format
+      :json
+    end
+
+
+    def details_blank?
+      blank?(details)
     end
 
 

@@ -1,0 +1,55 @@
+/******************************************************************************
+  SECTION: COMMON FONT SIZES
+******************************************************************************/
+.fsize-std {
+  font-size: 16px !important;
+}
+.fsize-small {
+  font-size: 12px !important;
+}
+.fsize-tiny {
+  font-size: 10px !important;
+}
+
+
+/******************************************************************************
+  SECTION: DISPLAY AND POSITIONING SINGULAR CLASSES
+******************************************************************************/
+.ilblock {
+  display: inline-block !important;
+}
+.block {
+  display: block !important;
+}
+
+.pos-rel {
+  position: relative;
+}
+
+.fl-left {
+  float: left;
+}
+.fl-right {
+  float: right;
+}
+
+.abs-top-right {
+  position: absolute;
+  top     : 0;
+  right   : 0;
+}
+.abs-top-left {
+  position: absolute;
+  top     : 0;
+  left    : 0;
+}
+.abs-bottom-left {
+  position: absolute;
+  bottom  : 0;
+  left    : 0;
+}
+.abs-bottom-right {
+  position: absolute;
+  bottom  : 0;
+  right   : 0;
+}

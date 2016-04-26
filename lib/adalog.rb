@@ -32,6 +32,10 @@ module Adalog
 
   module RepoConvenienceMethods
 
+    def repo
+      configuration.repo
+    end
+
     def all
       configuration.repo.all
     end

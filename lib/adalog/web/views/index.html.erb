@@ -1,3 +1,6 @@
+<script type="text/javascript">
+  adalog.entriesList.init();
+</script>
 
 <div class="entries-list">
 
@@ -5,7 +8,7 @@
 
   <% @entries.each do |entry| %>
 
-    <div class="pure-g entry">
+    <div class="pure-g entry -toggle-details">
       <div class="pure-u-1 pure-u-md-1-2">
         <div class="title-and-message">
           <div class="title"><%= entry.title %></div>
@@ -16,7 +19,16 @@
         <div class="timestamp"><%= humanize_time(entry.timestamp) %></div>
       </div>
       <div class="pure-u-1">
-        <%= entry.details %>
+        <div class="details">
+          <!-- <button class="pure-button button-small -show-details">Show Details</button> -->
+          <!-- <button class="pure-button button-small -hide-details">Hide Details</button> -->
+          <% unless entry.details_blank? %>
+            <pre class="-details-content -format-as-json"><%= entry.details.to_json %></pre>
+          <% end %>
+          <% unless entry.details_blank? %>
+            <div class="details-toggle-note fsize-tiny">Click to toggle details</div>
+          <% end %>
+        </div>
       </div>
     </div>
 
