@@ -19,7 +19,7 @@ module Adalog
         singleton:    true,
         html_erb:     true,
         time_format:  "%H:%M:%S - %d %b %Y",
-        web_heading:  "Mock Adapter Logs",
+        web_heading:  "Stub Adapter Logs",
       }
     end
 

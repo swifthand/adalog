@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PStoreRepoTest < Minitest::Test
+class ActiveRecordRepo < Minitest::Test
 
   test "" do
     skip

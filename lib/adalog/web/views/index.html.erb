@@ -23,7 +23,7 @@
           <!-- <button class="pure-button button-small -show-details">Show Details</button> -->
           <!-- <button class="pure-button button-small -hide-details">Hide Details</button> -->
           <% unless entry.details_blank? %>
-            <pre class="-details-content -format-as-json"><%= entry.details.to_json %></pre>
+            <pre class="-details-content -format-as-<%= entry.format %>"><%= entry.details.to_json %></pre>
           <% end %>
           <% unless entry.details_blank? %>
             <div class="details-toggle-note fsize-tiny">Click to toggle details</div>

@@ -7,7 +7,7 @@ class EntryTest < Minitest::Test
   Entry = Adalog::Entry
 
 
-  AnotherEntryClass = Struct.new(:title, :timestamp, :message, :details)
+  AnotherEntryClass = Struct.new(:title, :timestamp, :message, :details, :format)
 
 
   class AnotherEntryClassWithToH
@@ -23,6 +23,7 @@ class EntryTest < Minitest::Test
       { title:      "Something",
         timestamp:  @timestamp,
         message:    "happened",
+        format:     "plain",
         details:    "in the world"
       }
     end

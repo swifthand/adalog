@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors        = ["Paul Kwiatkowski"]
   spec.email          = ["paul@groupraise.com"]
   spec.summary        = %q{A not-quite logger, with several storage methods. Records occurrences, provides a web app for viewing entries.}
-  spec.description    = %q{A not-quite logger, with several storage methods. Records occurrences, provides a web app for viewing entries. Motivated by the need to record the actions of mocked-out versions of adapters to third-party services, and for that record to be something other than a traditional logger. Web viewer is built in Sinatra and so can be run standalone via the usual methods or mounted at some route within a Rails app. Comes with three repository implementations for storing/retrieving entries and is trivial to write your own.}
+  spec.description    = %q{A not-quite logger, with several storage methods. Records occurrences, provides a web app for viewing entries. Motivated by the need to record the actions of stubbed-out versions of adapters to third-party services, and for that record to be something other than a traditional logger. Web viewer is built in Sinatra and so can be run standalone via the usual methods or mounted at some route within a Rails app. Comes with three repository implementations for storing/retrieving entries and is trivial to write your own.}
   spec.homepage       = "https://github.com/swifthand/adalog"
   spec.license        = "Revised BSD, see LICENSE.md"
 
