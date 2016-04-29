@@ -103,11 +103,12 @@ And now if, in the course of building out your application, you can make an adap
 
 ## Included Adapters
 
-Much like how useful repositories come built-in, there are also basic adapters included in the project. Presently the only included adapter that saves you from writing your own, is `SimpleLoggingAdapter`, which uses `method_missing` to write entries for every method call made on it. For example:
+Much like how useful repositories come built-in, there are also basic adapters included in the project. Presently the only included adapter that saves you from writing your own, is `SimpleLoggingAdapter`, which is a factory for new logging adapter classes. These classes use `method_missing` to write entries for every method call made on it. For example:
 
 ```ruby
 # After configuring Adalog
-adapter = Adalog::SimpleLoggingAdapter.new("StubMoosendAdapter", Adalog.repo)
+klass = Adalog::SimpleLoggingAdapter.new("StubMoosendAdapter", Adalog.repo)
+adapter = klass.new("any", "args", "you", "want", "they're", "ignored!")
 adapter.unsubscribe_email('baz@example.com')
 ```
 
