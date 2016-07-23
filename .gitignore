@@ -27,3 +27,5 @@ rdoc
 test/tmp
 test/version_tmp
 config.ru
+.env
+.env*
