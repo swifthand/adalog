@@ -29,3 +29,5 @@ test/version_tmp
 config.ru
 .env
 .env*
+vendor
+.tool-versions
